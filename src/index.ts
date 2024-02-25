@@ -4,7 +4,6 @@ import { createClient } from 'redis';
 import 'dotenv/config';
 
 cron.schedule(`*/1 * * * *`, async () => {
-  console.log(process.env.REDIS_URL);
   console.log(`Running your task...`);
   console.log(`Fetching data from QuickIndexer...`);
   const responses = await Promise.all([

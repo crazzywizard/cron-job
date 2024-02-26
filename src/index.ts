@@ -9,6 +9,7 @@ cron.schedule(`*/1 * * * *`, async () => {
   const responses = await Promise.all([
     axios.get('https://api.quickindexer.xyz/leaderboard?days=1'),
     axios.get('https://api.quickindexer.xyz/leaderboard?days=7'),
+    axios.get('https://api.quickindexer.xyz/leaderboard?days=14'),
     axios.get('https://api.quickindexer.xyz/leaderboard?days=30'),
   ]);
   console.log(`Data fetched from QuickIndexer...`);
@@ -16,7 +17,8 @@ cron.schedule(`*/1 * * * *`, async () => {
   const leaderBoard = {
     '1': responses[0].data,
     '7': responses[1].data,
-    '30': responses[2].data,
+    '14': responses[2].data,
+    '30': responses[3].data,
   };
   const client = createClient({ url: process.env.REDIS_URL });
   client.on('error', (err) => console.log('Redis Client Error', err));

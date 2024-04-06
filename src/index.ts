@@ -3,7 +3,7 @@ import axios from 'axios';
 import { createClient } from 'redis';
 import 'dotenv/config';
 
-cron.schedule(`*/1 * * * *`, async () => {
+cron.schedule(`*/5 * * * *`, async () => {
   console.log(`Running your task...`);
   console.log(`Fetching data from QuickIndexer...`);
   const responses = await Promise.all([
